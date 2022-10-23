@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--返回值类型别名   包扫描-->
+    <!--<typeAliases>
+        <package name="com.wang.pojo"/>
+    </typeAliases>-->
+
+    <environments default="MybatisTest">
+
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!--Mybatis核心配置文件   替换连接信息，解决硬编码问题-->
+<!--                数据库连接信息-->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///studentsdb?useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+
+        <environment id="MybatisTest">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!--Mybatis核心配置文件   替换连接信息，解决硬编码问题-->
+                <!--                数据库连接信息-->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///mybatisdemo?useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--加载sql的映射文件-->
+        <!--<mapper resource="com/wang/Mapper/StudentMapper.xml"/>
+        <mapper resource="MybatisDemo/mapper/BrandMapper.xml"/-->
+        <!--使用Mapper代理开发后可以简化加载sql映射文件-->
+        <package name="com.wang.Mapper"/>
+        <package name="MybatisDemo.mapper"/>
+    </mappers>
+</configuration>
