@@ -45,6 +45,7 @@ public class MybatisTest {
 
     public static void selectByConditionSingle(BrandMapper mapper){
         Brand brand = new Brand();
+        brand.setBrandName("%华为");
         List<Brand> brands = mapper.selectByConditionSingle(brand);
         System.out.println(brands);
     }
